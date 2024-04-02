@@ -1,4 +1,5 @@
 #include "Student.h"
+#include "Degree.h"
 #include <iostream>
 
 using namespace std;
@@ -12,7 +13,7 @@ Student::Student() {
 	courseDays[0] = 0;
 	courseDays[1] = 0;
 	courseDays[2] = 0;
-	this->degreeProgram = degreeProgram;
+	this->degreeProgram = DegreeProgram::SOFTWARE;
 }
 
 Student::Student(string studentID, string fName, string lName, string email, int age, int courseDays[], DegreeProgram degreeProgram) {
@@ -91,21 +92,11 @@ DegreeProgram Student::getDegreeProgram() {
 
 void Student::print() {
 	string degreeString;
-	if (getDegreeProgram() == DegreeProgram::SOFTWARE) {
-		degreeString = "SOFTWARE";
-	}
-
-	if (getDegreeProgram() == DegreeProgram::SECURITY) {
-		degreeString = "SECURITY";
-	}
-
-	if (getDegreeProgram() == DegreeProgram::NETWORK) {
-		degreeString = "NETWORK";
-	}
+	degreeString = degreeProgramStrings[int(getDegreeProgram())];
 	cout << getStudentID() << "\t";
 	cout << "First Name: " << getFName() << "\t";
 	cout << "Last Name: " << getLName() << "\t";
 	cout << "Age: " << getAge() << "\t";
 	cout << "daysInCourse: {" << getCourseDays()[0] << ", " << getCourseDays()[1] << ", " << getCourseDays()[2] << "} ";
-	cout << "Degree Program" << degreeString << endl;
+	cout << "Degree Program: " << degreeString << endl;
 }

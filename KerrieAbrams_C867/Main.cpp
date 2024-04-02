@@ -26,5 +26,6 @@ int main() {
 	}
 	classRoster.printAll();
 
+	classRoster.~Roster();
 }
 

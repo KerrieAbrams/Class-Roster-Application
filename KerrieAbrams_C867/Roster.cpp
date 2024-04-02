@@ -1,14 +1,24 @@
 #include "Roster.h"
 #include "Student.h"
+#include "Degree.h"
 #include <iostream>
 using namespace std;
 
-Roster::Roster() {
+/*Roster::Roster() {
 	classRosterArray[5] = new Student[5];
 }
 
 Roster::Roster(Student* classRosterArray[5]) {
 	this->classRosterArray[5] = classRosterArray[5];
+}*/
+
+Roster::~Roster() {
+	this->indexPointer = -1;
+	for (int i = 0; i < 5; i++) {
+		delete classRosterArray[i];
+		classRosterArray[i] = nullptr;
+	}
+
 }
 
 void Roster::parse(string data) {
