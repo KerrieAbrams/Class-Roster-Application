@@ -7,7 +7,7 @@ using namespace std;
 int main() {
 
 	//Heading
-	cout << "C867-Scripting and Programming: Applications" << endl << "Language: C++" << endl << "Student ID: 010894830" << "Name: Kerrie Abrams" << endl;
+	cout << "C867-Scripting and Programming: Applications" << endl << "Language: C++" << endl << "Student ID: 010894830" << endl << "Name: Kerrie Abrams" << endl << endl;
 
 	//Student Data
 	const string studentData[] = {
