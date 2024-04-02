@@ -2,15 +2,19 @@
 #include "Student.h"
 
 class Roster {
-	Student student;
-	Student * classRosterArray= new Student[5];
+	int indexPointer = -1;
+	Student* classRosterArray[5];
 public:
 	Roster();
-	Roster(Student student);
-	void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram);
+	Roster(Student* classRosterArray[5]);
+	~Roster();
+	void parse(string data);
+	void add(string studentID, string fName, string lName, string email, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram);
 	void remove(string studentID);
 	void printAll();
 	void printAverageDaysInCourse(string studentID);
 	void printInvalidEmails();
 	void printByDegreeProgram(DegreeProgram degreeProgram);
 };
+
+ 

@@ -6,8 +6,10 @@ using namespace std;
 
 int main() {
 
+	//Heading
 	cout << "C867-Scripting and Programming: Applications" << endl << "Language: C++" << endl << "Student ID: 010894830" << "Name: Kerrie Abrams" << endl;
 
+	//Student Data
 	const string studentData[] = {
 		"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
 		"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
@@ -17,8 +19,12 @@ int main() {
 	};
 
 	
+	Roster classRoster;
+
+	for (int i = 0; i < 5; i++) {
+		classRoster.parse(studentData[i]);
+	}
+	classRoster.printAll();
+
 }
 
-Student* parse(string data) {
-
-}

@@ -9,31 +9,27 @@ private:
 	string lName;
 	string email;
 	int age;
-	int daysInCourse1;
-	int daysInCourse2;
-	int daysInCourse3;
+	int courseDays[3];
 	DegreeProgram degreeProgram;
 public:
 	Student();
-	Student(string studentID, string fName, string lName, string email, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram);
+	Student(string studentID, string fName, string lName, string email, int age, int courseDays[], DegreeProgram degreeProgram);
+	~Student();
+
 	string getStudentID();
 	string getFName();
 	string getLName();
 	string getEmail();
 	int getAge();
-	int getDaysInCourse1();
-	int getDaysInCourse2();
-	int getDaysInCourse3();
+	int* getCourseDays();
 	DegreeProgram getDegreeProgram();
+
 	void setStudentID(string studentID);
 	void setFName(string fName);
 	void setLName(string lName);
 	void setEmail(string email);
 	void setAge(int age);
-	void setDaysInCourse1(int daysInCourse1);
-	void setDaysInCourse2(int daysInCourse2);
-	void setDaysInCourse3(int daysInCourse3);
+	void setCourseDays(int prices[]);
 	void setDegreeProgram(DegreeProgram degreeProgram);
-	~Student();
 	void print();
 };
