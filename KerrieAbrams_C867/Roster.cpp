@@ -1,6 +1,7 @@
 #include "Roster.h"
 #include "Student.h"
 #include "Degree.h"
+#include <cstring>
 #include <iostream>
 using namespace std;
 
@@ -83,4 +84,14 @@ void Roster::printAll() {
 		classRosterArray[i]->print();
 	}
 }
-
+void Roster::printInvalidEmails() {
+	cout << "Displaying invalid emails:" << endl;
+	for (int i = 0; i < 5; i++) {
+		string email = classRosterArray[i]->getEmail();
+		char emailcstr[30];
+		strcpy_s(emailcstr, email.c_str());
+		if (strchr(emailcstr, ' ') != NULL || strchr(emailcstr, '@') == NULL || strchr(emailcstr, '.') == NULL) {
+			cout << email << " - is invalid" << endl;
+		}
+	}
+}

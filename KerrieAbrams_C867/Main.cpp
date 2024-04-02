@@ -26,6 +26,12 @@ int main() {
 	}
 	classRoster.printAll();
 
+	cout << endl;
+
+	classRoster.printInvalidEmails();
+
+	cout << endl;
+
 	classRoster.~Roster();
 }
 
