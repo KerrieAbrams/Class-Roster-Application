@@ -5,14 +5,6 @@
 #include <iostream>
 using namespace std;
 
-/*Roster::Roster() {
-	classRosterArray[5] = new Student[5];
-}
-
-Roster::Roster(Student* classRosterArray[5]) {
-	this->classRosterArray[5] = classRosterArray[5];
-}*/
-
 Roster::~Roster() {
 	this->indexPointer = -1;
 	for (int i = 0; i < 5; i++) {
@@ -21,7 +13,6 @@ Roster::~Roster() {
 	}
 
 }
-
 void Roster::parse(string data) {
 	size_t rhs = data.find(",");
 	string studentID = data.substr(0, rhs);
@@ -77,7 +68,6 @@ void Roster::add(string studentID, string fName, string lName, string email, int
 	int courseDays[3] = { daysInCourse1, daysInCourse2, daysInCourse3 };
 	classRosterArray[++indexPointer] = new Student(studentID, fName, lName, email, age, courseDays, degreeProgram);
 }
-
 void Roster::printAll() {
 	
 	for (int i = 0; i <= Roster::indexPointer; i++) {
@@ -110,13 +100,19 @@ void Roster::remove(string studentID) {
 				classRosterArray[i] = nullptr;
 			}
 			else {
-				Student* temp = classRosterArray[4];
-				classRosterArray[4] = classRosterArray[i];
-				classRosterArray[i] = temp;
+				
+				Student* temp = classRosterArray[i];
+				for (int k = i + 1; k <= 4; k++) {
+					classRosterArray[i] = classRosterArray[k];
+					i = k;
+				}
+				classRosterArray[4] = temp;
 				delete classRosterArray[4];
 				classRosterArray[4] = nullptr;
 			}
+			
 			Roster::indexPointer--;
+			break;
 		}
 
 	}
@@ -124,10 +120,28 @@ void Roster::remove(string studentID) {
 	if (exists == false) {
 		cout << "The student with the ID: " << studentID << " was not found." << endl;
 	}
-	
 
-	if (exists == true) {
-		printAll();
+}
+void Roster::printAverageDaysInCourse(string studentID) {
+	for (int i = 0; i <= Roster::indexPointer; i++) {
+		string sID = classRosterArray[i]->getStudentID();
+		int result = sID.compare(studentID);
+		if (result == 0) {
+			int sum = 0;
+			for (int j = 0; j <= 2; j++) {
+				sum = sum + classRosterArray[i]->getCourseDays()[j];
+			}
+			int average = sum / 3;
+			cout << "Student ID: " << studentID << ", average days in course is: " << average << endl;
+		}
 	}
+}
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+	cout << "Showing students in degree program: " << degreeProgramStrings[int(degreeProgram)] << endl;
+	for (int i = 0; i <= Roster::indexPointer; i++) {
+		if (degreeProgram == classRosterArray[i]->getDegreeProgram()) {
+			classRosterArray[i]->print();
 
+		}
+	}
 }

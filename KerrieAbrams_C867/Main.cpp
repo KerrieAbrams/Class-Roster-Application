@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main() {
+void main() {
 
 	//Heading
 	cout << "C867-Scripting and Programming: Applications" << endl << "Language: C++" << endl << "Student ID: 010894830" << endl << "Name: Kerrie Abrams" << endl << endl;
@@ -25,6 +25,7 @@ int main() {
 		classRoster.parse(studentData[i]);
 	}
 	cout << "Displaying all students:" << endl;
+
 	classRoster.printAll();
 
 	cout << endl;
@@ -33,12 +34,24 @@ int main() {
 
 	cout << endl;
 
+	for (int i = 0; i <= classRoster.Roster::indexPointer; i++) {
+		classRoster.printAverageDaysInCourse(classRoster.Roster::classRosterArray[i]->getStudentID());
+	}
+
+	cout << endl;
+
+	classRoster.printByDegreeProgram(DegreeProgram::SOFTWARE);
+
+	cout << endl;
+
 	classRoster.remove("A3");
+	classRoster.printAll();
 
 	cout << endl;
 
 	classRoster.remove("A3");
 
 	classRoster.~Roster();
+
 }
 
