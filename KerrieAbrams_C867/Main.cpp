@@ -24,6 +24,7 @@ int main() {
 	for (int i = 0; i < 5; i++) {
 		classRoster.parse(studentData[i]);
 	}
+	cout << "Displaying all students:" << endl;
 	classRoster.printAll();
 
 	cout << endl;
@@ -31,6 +32,12 @@ int main() {
 	classRoster.printInvalidEmails();
 
 	cout << endl;
+
+	classRoster.remove("A3");
+
+	cout << endl;
+
+	classRoster.remove("A3");
 
 	classRoster.~Roster();
 }
